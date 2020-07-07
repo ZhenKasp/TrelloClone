@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Register</title>
-</head>
-<body>
-  <h1>Registration Page!</h1>
-  <form action="{% url 'register' %}" method="post">
+{% block content %}
+  <h2>Sign up</h2>
+  <form method="post">
     {% csrf_token %}
-
-    {% if form.errors %}
-    <p>There are errors in the form!</p>
-    {% endif %}
-
-    {{ form }}
-
-    <input type="submit" value="Register">
+    {% for field in form %} <!-- cool staff right there -->
+      <p>
+        {{ field.label_tag }}
+            <br/>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
   </form>
-</body>
-</html>
+{% endblock %}
