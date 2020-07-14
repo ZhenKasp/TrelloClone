@@ -1,10 +1,14 @@
 <h1>Boards</h1>
 {% if user.is_authenticated %}
   <h2>You name is: {{ user.username }}</h2>
-  {{ dictionary }}
-  {% for list, cards in dictionary %}
+
+  {% for list,cards in dictionary.items %}
     <h2>{{ list }}</h2>
+    {% for card in cards %}
+      <p>{{ card }}</p>
+    {% endfor %}
   {% endfor %}
+
 {% else %}
   <h2>You are not logged in </h2>
 {% endif %}
