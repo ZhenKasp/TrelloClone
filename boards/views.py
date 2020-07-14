@@ -5,11 +5,12 @@ from .models import List, Card
 
 @login_required
 def index(request):
-    cards = []
+    dictionary = {}
     lists = List.objects.filter(user_id=request.user.id)  #Filter lists by user_id
     for list in lists:
-        cards.append(Card.objects.filter(list_id=list.id))
-    context = { 'lists': lists, 'cards': cards }
+        cards = Card.objects.filter(list_id=list.id)
+        dictionary[list.name] = cards
+    context = { 'dictionary': dictionary }
     return render(request, 'boards/index.html', context)
 
         # "lists" : { list1 : [card1, card2, car3] }
