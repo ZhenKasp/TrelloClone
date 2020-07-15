@@ -8,6 +8,9 @@ class List(models.Model):
     def __str__(self):
         return self.name
 
+    def return_id(self):
+        return self.id
+
 class Card(models.Model):
     list = models.ForeignKey(List, on_delete=models.CASCADE)
     name = models.TextField(max_length=300, blank=True)
