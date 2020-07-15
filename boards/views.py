@@ -9,24 +9,22 @@ from boards.forms import ListForm
 
 @login_required
 def index(request):
-    print(request.POST)
     dictionary = {}
+    list1 = []
     lists = List.objects.filter(user_id=request.user.id)  #Filter lists by user_id
     for list in lists:
         cards = Card.objects.filter(list_id=list.id)
         dictionary[list.name] = cards
-    context = { 'dictionary': dictionary }
-    return render(request, 'boards/index.html', context)
 
-
-@login_required
-def post(request):
-    print(request.POST)
     if request.method == 'POST':
         form = ListForm(request.POST)
-        print(HttpResponse(request.POST.items()))
-        if form.is_valid():
+        if form.is_valid(): # <-- doesn't go past here!
             a = form.save(commit=False)
             a.name = request.name
             a.save()
-    return render(request, 'boards/index.html', {'form': form})
+        list1 = List.objects.all()
+
+    context = {'dictionary': dictionary, 'list': list1}
+    print(request.POST, context)
+    return render(request, 'boards/index.html', context)
+# "lists" : { list1 : [card1, card2, car3] }
