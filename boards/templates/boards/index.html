@@ -9,6 +9,18 @@
     {% endfor %}
   {% endfor %}
 
+<form>
+  <label for="list_name">List name:</label>
+  <input type="text" id="list_name" name="list_name"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.post }}
+  <button type="submit">Submit</button>
+</form>
+
 {% else %}
   <h2>You are not logged in </h2>
 {% endif %}
