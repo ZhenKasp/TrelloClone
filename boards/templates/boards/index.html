@@ -9,16 +9,11 @@
     {% endfor %}
   {% endfor %}
 
-<form>
-  <label for="list_name">List name:</label>
-  <input type="text" id="list_name" name="list_name"><br><br>
-  <input type="submit" value="Submit">
-</form>
-
-<form method="post">
-  {% csrf_token %}
-  {{ form.post }}
-  <button type="submit">Submit</button>
+<form action = "" method = "POST">
+    {% csrf_token %}
+    <label for="newlist_name">New List name: </label>
+    <input id="newlist_name" type="text" name="newlist_name">
+    <input type="submit" value="OK">
 </form>
 
 {% else %}
