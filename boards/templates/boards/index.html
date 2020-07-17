@@ -11,8 +11,9 @@
 
 <form action = "" method = "POST">
     {% csrf_token %}
-    <p>{{ form }}</p>
-    <input type="submit" value="OK">
+    <p>Add new list:</p>
+    <p>{{ form.name }}</p>
+    <input type="submit" value="Add">
 </form>
 
 {% else %}

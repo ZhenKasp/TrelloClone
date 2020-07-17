@@ -6,4 +6,4 @@ from boards.models import List
 class ListForm(ModelForm):
     class Meta:
         model = List
-        fields = ['name', 'user'] #'__all__'
+        fields = ['name'] #'__all__'

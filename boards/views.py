@@ -17,13 +17,14 @@ def index(request):
 
     if request.method == 'POST':
         form = ListForm(request.POST)
-        form.user = 'admin'
-        print(form.is_valid())
+        #form.fields['user'] = 'admin'
         if form.is_valid():
-            form.save()
-        context = {'dictionary': dictionary, 'form': form}
+            a = form.save(commit=False)
+            a.user = request.user
+            a.save()
     else:
-        context = {'dictionary': dictionary}
+        form = ListForm()
 
+    context = {'dictionary': dictionary, 'form': form}
     return render(request, 'boards/index.html', context)
 # "lists" : { list1 : [card1, card2, car3] }
