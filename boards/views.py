@@ -17,11 +17,12 @@ def index(request):
 
     if request.method == 'POST':
         form = ListForm(request.POST)
-        #form.fields['user'] = 'admin'
         if form.is_valid():
             a = form.save(commit=False)
             a.user = request.user
             a.save()
+            form = ListForm() #for clearing the form after Submit button
+            return redirect('index') #using GET request, for reloading the page without submitting form again
     else:
         form = ListForm()
 
