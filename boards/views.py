@@ -21,7 +21,6 @@ def index(request):
             a = form.save(commit=False)
             a.user = request.user
             a.save()
-            form = ListForm() #for clearing the form after Submit button
             return redirect('index') #using GET request, for reloading the page without submitting form again
     else:
         form = ListForm()
