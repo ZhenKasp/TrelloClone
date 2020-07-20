@@ -1,3 +1,8 @@
+<nav>
+  <a href="/users/login" class="button">Log in</a>
+  <a href="/users/register" class="button">Registration</a>
+</nav>
+
 <h1>Boards</h1>
 {% if user.is_authenticated %}
   <h2>You name is: {{ user.username }}</h2>
@@ -11,16 +16,18 @@
 
 <form action = "" method = "POST">
     {% csrf_token %}
+    <p>Add new card:</p>
+    <p>{{ form.form_card }}</p>
+    <input type="submit" value="Add Card">
+</form>
+
+<form action = "" method = "POST">
+    {% csrf_token %}
     <p>Add new list:</p>
-    <p>{{ form.name }}</p>
-    <input type="submit" value="Add">
+    <p>{{ form.form_list }}</p>
+    <input type="submit" value="Add List">
 </form>
 
 {% else %}
   <h2>You are not logged in </h2>
 {% endif %}
-
-<nav>
-  <a href="/users/login" class="button">Log in</a>
-  <a href="/users/register" class="button">Registration</a>
-</nav>
