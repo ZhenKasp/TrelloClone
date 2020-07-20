@@ -1,33 +1,45 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 <nav>
-  <a href="/users/login" class="button">Log in</a>
-  <a href="/users/register" class="button">Registration</a>
+    <a href="/users/login" class="button">Log in</a>
+    <a href="/users/register" class="button">Registration</a>
 </nav>
 
 <h1>Boards</h1>
 {% if user.is_authenticated %}
-  <h2>You name is: {{ user.username }}</h2>
-
-  {% for list, cards in dictionary.items %}
-    <h2>{{ list }}</h2>
-    {% for card in cards %}
-      <p>{{ card }}</p>
-    {% endfor %}
-  {% endfor %}
-
-<form action = "" method = "POST">
-    {% csrf_token %}
-    <p>Add new card:</p>
-    <p>{{ form.form_card }}</p>
-    <input type="submit" value="Add Card">
-</form>
-
-<form action = "" method = "POST">
-    {% csrf_token %}
-    <p>Add new list:</p>
-    <p>{{ form.form_list }}</p>
-    <input type="submit" value="Add List">
-</form>
-
+    <h2>You name is: {{ user.username }}</h2>
 {% else %}
-  <h2>You are not logged in </h2>
+    <h2>You are not logged in </h2>
 {% endif %}
+
+<div class="board">
+    {% for list, cards in dictionary.items %}
+    <div class="list">
+        <h2>{{ list }}</h2>
+        {% for card in cards %}
+            <div class="card">
+                <p>{{ card }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+<span class="clear"></span>    <!--clearing float left-->
+
+<div class="forms">
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        <h3>Add new card:</h3>
+        <p>{{ form.form_card }}</p>
+        <input type="submit" value="Add Card">
+    </form>
+
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        <h3>Add new list:</h3>
+        <p>{{ form.form_list }}</p>
+        <input type="submit" value="Add List">
+    </form>
+</div>
