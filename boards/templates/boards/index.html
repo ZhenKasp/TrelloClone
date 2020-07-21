@@ -20,7 +20,7 @@
 <div class="board">
     {% for list, cards in dictionary.items %}
     <div class="list">
-        <h2>{{ list }}</h2>
+        <h2 id="list_{{ list.id }}">{{ list.name }}</h2>
         {% for card in cards %}
             <div class="card">
                 <p>{{ card }}</p>
@@ -62,10 +62,12 @@
 {% block javascript %}
 <script>
 
-  $( "#change-list-name" ).change(function() {
-  $("#change").text("Whis works great");
+  $("#change-list-name").change(function() {
+    var str = $("#id_name").val();
+    $("#list_1").text(str);
+    alert(str)
   });
-
+    // val for input
     // $("#change-list-name").submit(function (e) {
     //     // preventing from page reload and default actions
     //     e.preventDefault();
