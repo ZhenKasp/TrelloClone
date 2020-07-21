@@ -12,7 +12,7 @@ def index(request):
     lists = List.objects.filter(user_id=request.user.id)  #Filter lists by user_id
     for list in lists:
         cards = Card.objects.filter(list_id=list.id)
-        dictionary[list.name] = cards
+        dictionary[list] = cards
 
     if request.method == 'POST':
 
