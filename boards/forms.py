@@ -15,7 +15,7 @@ class CardForm(ModelForm):
         fields = ['name', 'list'] #'__all__'
 
 
-class EditList(ModelForm):
+class ChangeListName(ModelForm):
     class Meta:
         model = List
         fields = ['name']

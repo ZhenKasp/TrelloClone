@@ -29,4 +29,6 @@ span.clear { clear: left; display: block; }
     top: 0px;
     margin: 10px;
     width: 20%;
+    border: 4px solid black;
+    background: #aaa;
 }

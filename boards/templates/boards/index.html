@@ -1,9 +1,9 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <nav>
     <a href="/users/login" class="button">Log in</a>
@@ -33,49 +33,76 @@
 <span class="clear"></span>    <!--clearing float left-->
 
 <div class="forms">
-    <form action = "" method = "POST">
-        {% csrf_token %}
-        <h3>Add new card:</h3>
-        <p>{{ form.form_card }}</p>
-        <input type="submit" value="Add Card">
-    </form>
+  <form action="" method="POST" id="add-list">
+      {% csrf_token %}
+      <h3>Add new list:</h3>
+      <p>{{ form.form_list }}</p>
+      <input type="submit" value="Add List" name="add-list">
+  </form>
 
-    <form action = "" method = "POST">
-        {% csrf_token %}
-        <h3>Add new list:</h3>
-        <p>{{ form.form_list }}</p>
-        <input type="submit" value="Add List">
-    </form>
+  <form action = "" method="POST" id="add-card">
+      {% csrf_token %}
+      <h3>Add new card:</h3>
+      <p>{{ form.form_card }}</p>
+      <input type="submit" value="Add Card" name="add-card">
+  </form>
+</div>
 
-    <form action = "" method = "POST">
-        {% csrf_token %}
-        <h3>Edit list:</h3>
-        <p>{{ form.form_editl.name }}</p>
-        <input type="submit" value="Add List">
-    </form>
-
-    <form id="edit-form">
-         {% csrf_token %}
-         {{ form.form_editl.name }}
-         <input type="submit" value="Add List">
-    </form>
+<div class="change-list-name" id="change-list-name">
+  <form action = "" method = "POST" name="change-list-name" id="change-list-name" >
+      {% csrf_token %}
+      <h3>Change list name:</h3>
+      <p id="change">{{ form.form_list }}</p>
+      <input type="submit" value="Change list name" name="change-list-name">
+  </form>
 
 </div>
+
 
 {% block javascript %}
 <script>
 
-    $("#edit-form").submit(function (e) {
-        e.preventDefault();
-        var serializedData = $(this).serialize();
+  $( "#change-list-name" ).change(function() {
+  $("#change").text("Whis works great");
+  });
 
-        $.ajax({
-            type: 'POST',
-            url: "{% url 'index' %}",
-            data: serializedData,
-            success: function (response) {
-            $("#edit-form").trigger('reset');
-            $("#id_name").focus();
-
+    // $("#change-list-name").submit(function (e) {
+    //     // preventing from page reload and default actions
+    //     e.preventDefault();
+    //     // serialize the data for sending the form data.
+    //     var serializedData = $(this).serialize();
+    //     $("#change").text("New word");
+        // make POST ajax call
+        // $.ajax({
+        //     type: 'POST',
+        //     url: "{% url 'index' %}",
+        //     data: serializedData,
+        //     success: function (response) {
+        //         // on successfull creating object
+        //         // 1. clear the form.
+        //         $("#friend-form").trigger('reset');
+        //         // 2. focus to nickname input
+        //         $("#id_nick_name").focus();
+        //
+        //         // display the newly friend to table.
+        //         var instance = JSON.parse(response["instance"]);
+        //         var fields = instance[0]["fields"];
+        //         $("#my_friends tbody").prepend(
+        //             `<tr>
+        //             <td>${fields["nick_name"]||""}</td>
+        //             <td>${fields["first_name"]||""}</td>
+        //             <td>${fields["last_name"]||""}</td>
+        //             <td>${fields["likes"]||""}</td>
+        //             <td>${fields["dob"]||""}</td>
+        //             <td>${fields["lives_in"]||""}</td>
+        //             </tr>`
+        //         )
+        //     },
+        //     error: function (response) {
+        //         // alert the error if any error occured
+        //         alert(response["responseJSON"]["error"]);
+        //     }
+        // })
+        // })
 </script>
 {% endblock javascript %}
