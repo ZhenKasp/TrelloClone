@@ -1,6 +1,9 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <nav>
     <a href="/users/login" class="button">Log in</a>
@@ -17,7 +20,7 @@
 <div class="board">
     {% for list, cards in dictionary.items %}
     <div class="list">
-        <h2>{{ list.name }}</h2>
+        <h2>{{ list }}</h2>
         {% for card in cards %}
             <div class="card">
                 <p>{{ card }}</p>
@@ -43,4 +46,36 @@
         <p>{{ form.form_list }}</p>
         <input type="submit" value="Add List">
     </form>
+
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        <h3>Edit list:</h3>
+        <p>{{ form.form_editl.name }}</p>
+        <input type="submit" value="Add List">
+    </form>
+
+    <form id="edit-form">
+         {% csrf_token %}
+         {{ form.form_editl.name }}
+         <input type="submit" value="Add List">
+    </form>
+
 </div>
+
+{% block javascript %}
+<script>
+
+    $("#edit-form").submit(function (e) {
+        e.preventDefault();
+        var serializedData = $(this).serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'index' %}",
+            data: serializedData,
+            success: function (response) {
+            $("#edit-form").trigger('reset');
+            $("#id_name").focus();
+
+</script>
+{% endblock javascript %}
