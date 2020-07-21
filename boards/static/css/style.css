@@ -1,0 +1,32 @@
+span.clear { clear: left; display: block; }
+.board
+{
+    width: 80%;
+}
+.list
+{
+    display: table;
+    position: relative;
+    width: 200px;
+    height: auto;
+    background: #aaa;
+    padding: 10px;
+    border: 4px solid black;
+    margin: 5px;
+    float: left;
+}
+.card
+{
+    position: relative;
+    width: auto;
+    height: auto;
+    background: #ccc;
+}
+.forms
+{
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    margin: 10px;
+    width: 20%;
+}
