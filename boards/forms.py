@@ -19,3 +19,8 @@ class ChangeListName(ModelForm):
     class Meta:
         model = List
         fields = ['name']
+
+    def __init__(self, *args, **kwargs):
+        super(ChangeListName, self).__init__(auto_id='%s_1', *args, **kwargs) #auto_id=True
+
+        #self.fields['name'].widget.attrs.update({'id': 'oleg1'})
