@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3768567a-71cc-4a98-834d-3d2fa505562e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/boards/static/js/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boards/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/boards/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boards/templates/boards/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/boards/templates/boards/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="3768567a-71cc-4a98-834d-3d2fa505562e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
