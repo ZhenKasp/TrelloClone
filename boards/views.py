@@ -34,19 +34,18 @@ def index(request):
                 a.save()
                 return redirect('index')  # using GET request, for reloading the page without submitting form again
 
-        if request.POST.get("change-list-name") == "Change list name":
-            if request.is_ajax:
-                changeListName = ChangeListName(request.POST)
-                if changeListName.is_valid():
-                    a = List.objects.get(pk=1)
-                    f = ChangeListName(request.POST, instance=a)
-                    instance = f.save()
-                    ser_instance = serializers.serialize('json', [instance, ])
-                    return JsonResponse({"instance": ser_instance}, status=200)
-                else:
-                    return JsonResponse({"error": form.errors}, status=400)
-
-
+        #if request.POST.get("change-list-name") == "Change list name":
+        if request.is_ajax:
+            changeListName = ChangeListName(request.POST)
+            print(changeListName)
+            if changeListName.is_valid():
+                a = List.objects.get(pk=1)
+                f = ChangeListName(request.POST, instance=a)
+                instance = f.save()
+                ser_instance = serializers.serialize('json', [instance, ])
+                return JsonResponse({"instance": ser_instance}, status=200)
+            # else:
+            #     return JsonResponse({"error": form.errors}, status=400)
 
     else:
         form_list = ListForm()

@@ -1,45 +1,36 @@
+        function getCookie(c_name)
+    {
+        if (document.cookie.length > 0)
+        {
+            c_start = document.cookie.indexOf(c_name + "=");
+            if (c_start != -1)
+            {
+                c_start = c_start + c_name.length + 1;
+                c_end = document.cookie.indexOf(";", c_start);
+                if (c_end == -1) c_end = document.cookie.length;
+                return unescape(document.cookie.substring(c_start,c_end));
+            }
+        }
+        return "";
+     }
 
-  $("#change-list-name").change(function() {
-    var str = $("#name_1").val();
-    $("#list_1").text(str);
-  });
-    // val for input
-    // $("#change-list-name").submit(function (e) {
-    //     // preventing from page reload and default actions
-    //     e.preventDefault();
-    //     // serialize the data for sending the form data.
-    //     var serializedData = $(this).serialize();
-    //     $("#change").text("New word");
-        // make POST ajax call
+     $("#change-list-name").change(function (e) {
+         e.preventDefault();        // preventing from page reload and default actions
+         var serializedData = $("#name_1").serialize();      // serialize the data for sending the form data.
 
-        // $.ajax({
-        //     type: 'POST',
-        //     url: "{% url 'index' %}",
-        //     data: serializedData,
-        //     success: function (response) {
-        //         // on successfull creating object
-        //         // 1. clear the form.
-        //         $("#friend-form").trigger('reset');
-        //         // 2. focus to nickname input
-        //         $("#id_nick_name").focus();
-        //
-        //         // display the newly friend to table.
-        //         var instance = JSON.parse(response["instance"]);
-        //         var fields = instance[0]["fields"];
-        //         $("#my_friends tbody").prepend(
-        //             `<tr>
-        //             <td>${fields["nick_name"]||""}</td>
-        //             <td>${fields["first_name"]||""}</td>
-        //             <td>${fields["last_name"]||""}</td>
-        //             <td>${fields["likes"]||""}</td>
-        //             <td>${fields["dob"]||""}</td>
-        //             <td>${fields["lives_in"]||""}</td>
-        //             </tr>`
-        //         )
-        //     },
-        //     error: function (response) {
-        //         // alert the error if any error occured
-        //         alert(response["responseJSON"]["error"]);
-        //     }
-        // })
-        // })
+         $.ajaxSetup({
+            headers: { "X-CSRFToken": getCookie("csrftoken") }
+         });
+
+         $.ajax({
+             type: 'POST',
+             url: "",
+             data: serializedData,
+         })
+     })
+
+    $("#change-list-name").change(function(e) {
+        e.preventDefault();
+        var str = $("#name_1").val();
+        $("#list_1").text(str);
+    });
