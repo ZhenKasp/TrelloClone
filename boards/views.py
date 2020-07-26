@@ -37,7 +37,6 @@ def index(request):
         #if request.POST.get("change-list-name") == "Change list name":
         if request.is_ajax:
             changeListName = ChangeListName(request.POST)
-            print(changeListName)
             if changeListName.is_valid():
                 a = List.objects.get(pk=1)
                 f = ChangeListName(request.POST, instance=a)

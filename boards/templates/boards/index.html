@@ -24,7 +24,7 @@
         <h2 id="list_{{ list.id }}">{{ list.name }}</h2>
         {% for card in cards %}
             <div class="card">
-                <p>{{ card }}</p>
+                <p id="card_{{ list.id }}_{{ card.id }}">{{ card }}</p>
             </div>
         {% endfor %}
     </div>
