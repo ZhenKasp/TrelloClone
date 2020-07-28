@@ -4,6 +4,7 @@
     <list default="true" id="3768567a-71cc-4a98-834d-3d2fa505562e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boards/static/js/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/boards/static/js/jquery.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boards/templates/boards/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/boards/templates/boards/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boards/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/boards/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

@@ -38,7 +38,7 @@ def index(request):
         if request.is_ajax:
             changeListName = ChangeListName(request.POST)
             if changeListName.is_valid():
-                a = List.objects.get(pk=1)
+                a = List.objects.get(pk=request.POST['name_id'][5:])
                 f = ChangeListName(request.POST, instance=a)
                 instance = f.save()
                 ser_instance = serializers.serialize('json', [instance, ])
@@ -49,8 +49,7 @@ def index(request):
     else:
         form_list = ListForm()
         form_card = CardForm()
-        form_change_list_name = ChangeListName()
 
-    forms_dict = {'form_list': form_list, 'form_card': form_card, 'form_change_list_name': form_change_list_name}
-    context = {'dictionary': dictionary, 'form': forms_dict} # dictionary == "lists" : { list1 : [card1, card2, car3] }
+    forms_dict = {'form_list': form_list, 'form_card': form_card}
+    context = {'dictionary': dictionary, 'form': forms_dict}    # dictionary == "lists" : { list1 : [card1, card2, car3] }
     return render(request, 'boards/index.html', context)

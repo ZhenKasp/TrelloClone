@@ -49,17 +49,6 @@
   </form>
 </div>
 
-<div class="change-list-name" id="change-list-name">
-  <form action = "" method = "POST" name="change-list-name" id="change-list-name" >
-      {% csrf_token %}
-      <h3>Change list name:</h3>
-      <p id="change">{{ form.form_change_list_name }}</p>
-      <input type="submit" value="Change list name" name="change-list-name">
-  </form>
-
-</div>
-
-
 {% block javascript %}
     <script src="{% static 'js/jquery.js' %}"></script>
 {% endblock javascript %}

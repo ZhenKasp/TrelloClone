@@ -34,12 +34,12 @@ $(".list_name").click(function () {
   if ($('#list_input').length == 0 ) {
     jQuery(this).append(input);
   }
-
 });
 
 $(".list_name").change(function (e) {
   e.preventDefault();        // preventing from page reload and default actions
-  var serializedData = $("#list_input").serialize();      // serialize the data for sending the form data.
+    var serializedData = $("#list_input").serialize() +'&'+ 'name_id=' + $(this).attr('id');    // serialize the data for sending the form data.
+
   console.log(serializedData);
   var str = $("#list_input").val();
   jQuery('#list_input').remove();
