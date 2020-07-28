@@ -21,10 +21,10 @@
 <div class="board">
     {% for list, cards in dictionary.items %}
     <div class="list">
-        <h2 id="list_{{ list.id }}">{{ list.name }}</h2>
+        <h2 class="list_name" id="list_{{ list.id }}">{{ list.name }}</h2>
         {% for card in cards %}
             <div class="card">
-                <p id="card_{{ list.id }}_{{ card.id }}">{{ card }}</p>
+                <p class="card_name" id="card_{{ list.id }}_{{ card.id }}">{{ card }}</p>
             </div>
         {% endfor %}
     </div>

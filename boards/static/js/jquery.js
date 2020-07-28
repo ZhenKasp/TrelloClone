@@ -29,20 +29,20 @@ $("#change-list-name").change(function (e) {
   })
 });
 
-$("#list_1").click(function () {
-  input = jQuery('<input name="list_input_1", id="list_input_1">');
-  if ($('#list_input_1').length == 0 ) {
-    jQuery('#list_1').append(input);
+$(".list_name").click(function () {
+  input = jQuery('<input name="name", id="list_input">');
+  if ($('#list_input').length == 0 ) {
+    jQuery(this).append(input);
   }
 
 });
 
-$("#list_1").change(function (e) {
+$(".list_name").change(function (e) {
   e.preventDefault();        // preventing from page reload and default actions
-  var serializedData = $("#list_input_1").serialize();      // serialize the data for sending the form data.
+  var serializedData = $("#list_input").serialize();      // serialize the data for sending the form data.
   console.log(serializedData);
-  var str = $("#list_input_1").val();
-  jQuery('#list_input_1').remove();
+  var str = $("#list_input").val();
+  jQuery('#list_input').remove();
   $(this).text(str);
 
   $.ajaxSetup({

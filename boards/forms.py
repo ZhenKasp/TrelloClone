@@ -21,6 +21,6 @@ class ChangeListName(ModelForm):
         fields = ['name']
 
     def __init__(self, *args, **kwargs):
-        super(ChangeListName, self).__init__(auto_id='%s_1', *args, **kwargs) #auto_id=True
+        super(ChangeListName, self).__init__(auto_id='%s_{{ List.id }}', *args, **kwargs) #auto_id=True
 
         #self.fields['name'].widget.attrs.update({'id': 'oleg1'})
